@@ -5,6 +5,7 @@
     <div class="brand-sidebar">
       <h1 class="logo-wrapper">
         <router-link class="brand-logo darken-1" to="/">
+          <img :src="bURL+'images/logo/materialize-logo.png'" alt="materialize logo" />
           <span class="logo-text">Assignment</span>
         </router-link>
         <router-link class="navbar-toggler" to>
@@ -48,6 +49,7 @@
   </aside>
 </template>
 <style lang="stylus" scoped></style>
+<script src="{{ asset('js/vendors.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
 import PerfectScrollbar from "perfect-scrollbar";
 
@@ -55,18 +57,10 @@ export default {
   data: () => {
     return {
       bURL: window.bURL
+      //role: window.role
     };
   },
-
   mounted() {
-    axios
-      .get(`/api/list-users` + this.searchString)
-      .then(res => {
-        console.log(res.data.users);
-        this.listUsers = res.data.users;
-      })
-      .catch(err => {});
-
     new PerfectScrollbar(".leftside-navigation ");
     new PerfectScrollbar(".slide-out-right-body, .chat-body .collection");
     new PerfectScrollbar(".chat-body .collection");

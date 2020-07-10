@@ -2,12 +2,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 window.Vuex = require('vuex');
-window.bURL = 'http://dev.assignment/';
-window.blogURL = 'http://dev.assignment/blogs/';
-window.newsURL = 'http://dev.assignment/news/';
+window.bURL = 'http://127.0.0.1:4912/';
 localStorage.setItem('bURL', bURL);
-localStorage.setItem('blogURL', blogURL);
-localStorage.setItem('newsURL', newsURL);
 Vue.config.productionTip = false;
 import router from './router';
 import App from "./components/AppComponent";

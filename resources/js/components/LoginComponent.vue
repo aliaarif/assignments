@@ -1,47 +1,51 @@
 <template>
-  <div id="register-page" class="row">
-    <div
-      align="center"
-      class="col s12 m4 l4 z-depth-4 card-panel border-radius-6 register-card bg-opacity-8"
-    >
-      <form @submit.prevent="login" class="login-form">
-        <div class="row">
-          <div class="input-field col s12">
-            <h5 class="ml-4">Login Panel</h5>
-            <p class="ml-4">Login to assignment app!</p>
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="material-icons prefix pt-2">mail_outline</i>
-            <input id="username" type="text" v-model="form.username" />
-            <label for="username">Username / Mobile / Email</label>
-            <span
-              class="red-text"
-              role="alert"
-              v-if="this.$v.form.username.$error"
-            >Please provide your username(username/email/mobile)</span>
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="material-icons prefix pt-2">lock_outline</i>
-            <input id="password" type="password" v-model="form.password" />
-            <label for="password">Password</label>
-          </div>
-        </div>
+  <center>
+    <div class="row mt-10">
+      <div class="col s12 m4 l4"></div>
+      <div class="col s12 m4 l4 z-depth-4 card-panel border-radius-6 register-card bg-opacity-8">
+        <div id="register-page" class="row" style="margin:0px auth">
+          <form @submit.prevent="login" class="login-form">
+            <div class="row">
+              <div class="input-field col s12">
+                <h5 class="ml-4">Login Panel</h5>
+                <p class="ml-4">Login to assignment!</p>
+                <p class="ml-4 red-text">{{ error }}</p>
+              </div>
+            </div>
+            <div class="row margin">
+              <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">mail_outline</i>
+                <input id="username" type="text" v-model="form.username" />
+                <label for="username">Email</label>
+                <span
+                  class="red-text"
+                  role="alert"
+                  v-if="this.$v.form.username.$error"
+                >Please provide your email</span>
+              </div>
+            </div>
+            <div class="row margin">
+              <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">lock_outline</i>
+                <input id="password" type="password" v-model="form.password" />
+                <label for="password">Password</label>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <button
-              type="submit"
-              class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
-            >Login</button>
-          </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button
+                  type="submit"
+                  class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
+                >Login</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
+    <div class="col s12 m4 l4"></div>
+  </center>
 </template>
 <script>
 import { required, email, minLength } from "vuelidate/lib/validators";
@@ -53,23 +57,7 @@ export default {
         username: "",
         password: ""
       },
-      // layout:
-      // localStorage.getItem("loggedIn") == null
-      // ? false
-      // : localStorage.getItem("layout"),
-      // role:
-      // localStorage.getItem("role") == null
-      // ? false
-      // : localStorage.getItem("role"),
-      // token:
-      // localStorage.getItem("token") == null
-      // ? false
-      // : localStorage.getItem("token"),
-      // //ucode: localStorage.getItem('ucode') == null ? false : localStorage.getItem('ucode') ,
-      // loggedIn:
-      // localStorage.getItem("loggedIn") == null
-      // ? false
-      // : localStorage.getItem("loggedIn"),
+      error: "",
       user: {}
     };
   },
@@ -138,7 +126,9 @@ export default {
           window.location.href = bURL;
           //}
         })
-        .catch(err => {});
+        .catch(err => {
+          this.error = err.response.data.status;
+        });
     }
   },
   mounted() {

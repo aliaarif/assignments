@@ -40,9 +40,7 @@ export default {
   },
   data: () => {
     return {
-      bURL: "http://dev.mps/",
-      blogURL: "http://dev.mps/blogs/",
-      newsURL: "http://dev.mps/news/",
+      bURL: "http://127.0.0.1:4912/",
 
       loggedIn: window.loggedIn,
       bURL: window.bURL,

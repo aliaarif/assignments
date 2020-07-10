@@ -5,7 +5,7 @@
     <div class="brand-sidebar">
       <h1 class="logo-wrapper">
         <router-link class="brand-logo darken-1" to="/">
-          <span class="logo-text">Assignment</span>
+          <span class="logo-text">Assignment1</span>
         </router-link>
         <router-link class="navbar-toggler" to>
           <i class="material-icons">radio_button_checked</i>

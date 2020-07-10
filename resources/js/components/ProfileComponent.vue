@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="input-field col s12 mt-2">
+      <input type="text" id="autocomplete-input" class="autocomplete" />
+      <label for="autocomplete-input">Search with user name listed below...</label>
+    </div>
+
     <table
       id="data-table-simple"
       class="display dataTable dtr-inline"
@@ -42,7 +47,7 @@ export default {
     axios
       .get(`/api/list-users`)
       .then(res => {
-        console.log(res.data.users);
+        //console.log(res.data.users);
         this.listUsers = res.data.users;
       })
       .catch(err => {});

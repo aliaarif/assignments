@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 
 Route::group(['namespace' => 'Api'], function(){
 	Route::get('list-users', 'UserController@listUsers');
+	Route::get('list-user-details-in-pdf/{term}', 'UserController@getUserInPDF');
+	
 });
 
 Route::post('login', 'Api\UserController@login')->name('login');

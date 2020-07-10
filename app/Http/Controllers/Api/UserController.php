@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Department;
 use App\User;
+use App\Profile;
 use Auth;
 use Hash;
 
@@ -151,5 +152,23 @@ class UserController extends Controller
         $users = User::where('id', '>',  1)->with(['profile'])->get();
         return response()->json(['users' => $users], 200);
     }
+
+
+    public function getUserInPDF($term){
+        $users = Profile::where('name', '=', $term)->get();
+
+        if($users){
+            return $users;
+
+            return response()->json($users, 200);
+        }else{
+            return response()->json(['status' => false], 200);
+        }
+
+        
+        
+    }
+
+    
 
 }
